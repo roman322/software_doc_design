@@ -1,0 +1,48 @@
+{
+    "name": "UserCourse",
+    "fields": [
+        {
+            "fieldName": "enrolled",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "enrolledDate",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "finished",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "finishedDate",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "course",
+            "otherEntityRelationshipName": "userCourse",
+            "relationshipName": "course",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "courseraUser",
+            "otherEntityRelationshipName": "userCourse",
+            "relationshipName": "user",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200415094000",
+    "entityTableName": "user_course",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

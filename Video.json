@@ -1,0 +1,69 @@
+{
+    "name": "Video",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "unique",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "100"
+        },
+        {
+            "fieldName": "url",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "unique",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "255"
+        },
+        {
+            "fieldName": "durationInSeconds",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "contentDescription",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "1000"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "videoTranscriptLanguage",
+            "otherEntityRelationshipName": "video",
+            "relationshipName": "videoTranscriptLanguage"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "userVideo",
+            "otherEntityRelationshipName": "video",
+            "relationshipName": "userVideo"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "course",
+            "otherEntityRelationshipName": "videos",
+            "relationshipName": "associatedCourse",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200415093700",
+    "entityTableName": "video",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

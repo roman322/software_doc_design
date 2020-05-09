@@ -1,0 +1,40 @@
+{
+    "name": "UserVideo",
+    "fields": [
+        {
+            "fieldName": "watched",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "watchedDate",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "video",
+            "otherEntityRelationshipName": "userVideo",
+            "relationshipName": "video",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "courseraUser",
+            "otherEntityRelationshipName": "userVideo",
+            "relationshipName": "user",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200415094100",
+    "entityTableName": "user_video",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

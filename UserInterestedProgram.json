@@ -1,0 +1,40 @@
+{
+    "name": "UserInterestedProgram",
+    "fields": [
+        {
+            "fieldName": "bought",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "boughtDate",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "program",
+            "otherEntityRelationshipName": "userInterestedProgram",
+            "relationshipName": "program",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "courseraUser",
+            "otherEntityRelationshipName": "userInterestedProgram",
+            "relationshipName": "user",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200415094200",
+    "entityTableName": "user_interested_program",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

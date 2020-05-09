@@ -1,0 +1,63 @@
+{
+    "name": "Program",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "unique",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "100"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "1000"
+        },
+        {
+            "fieldName": "price",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "durationInMonths",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "course",
+            "otherEntityRelationshipName": "associatedProgram",
+            "relationshipName": "courses"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "userInterestedProgram",
+            "otherEntityRelationshipName": "program",
+            "relationshipName": "userInterestedProgram"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "institution",
+            "otherEntityRelationshipName": "programs",
+            "relationshipName": "createdBy",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200415093400",
+    "entityTableName": "program",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

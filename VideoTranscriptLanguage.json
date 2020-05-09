@@ -1,0 +1,40 @@
+{
+    "name": "VideoTranscriptLanguage",
+    "fields": [
+        {
+            "fieldName": "text",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "2000"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "video",
+            "otherEntityRelationshipName": "videoTranscriptLanguage",
+            "relationshipName": "video",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "language",
+            "otherEntityRelationshipName": "videoTranscriptLanguage",
+            "relationshipName": "language",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200415094300",
+    "entityTableName": "video_transcript_language",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}
