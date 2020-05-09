@@ -1,0 +1,137 @@
+entity CourseraUser {  
+  id Long
+    firstName String required unique maxlength(100)
+    surname String required unique maxlength(100)
+    birthDate LocalDate
+    sex Sex
+    username String required unique maxlength(50)
+    password String required unique maxlength(50)
+    bio String maxlength(1000)
+    country String maxlength(50)
+    facebookUrl String maxlength(255)
+    googlePlusUrl String maxlength(255)
+}
+
+entity Program {
+  id Long
+    name String required unique maxlength(100) 
+    description String maxlength(1000)
+    price Double
+    durationInMonths Integer
+}
+
+entity Course {
+  id Long
+    name String required unique maxlength(100)
+    durationInWeeks Integer
+    description String maxlength(1000)
+    price Double
+    subject Subject
+    level Level
+    availability Availability
+    startDate ZonedDateTime
+  finishDate ZonedDateTime
+}
+
+entity Language {
+  id Long
+    name String required unique maxlength(50)
+    code String required unique pattern(/[A-Z]{2}/)
+}
+
+entity Video {
+  id Long
+    name String required unique maxlength(100)
+    url String required unique maxlength(255)
+    durationInSeconds Long
+    contentDescription String maxlength(1000)
+}
+
+entity Institution {
+  id Long
+    name String required unique maxlength(100)
+    location String required maxlength(255)
+    about String maxlength(1000)
+}
+
+entity Instructor {
+  id Long
+    firstName String required unique maxlength(100)
+    surname String required unique maxlength(100)
+    birthDate LocalDate
+    position String maxlength(100)
+    bio String maxlength(1000)
+}
+
+entity UserCourse {
+  id Long
+    enrolled Boolean
+    enrolledDate ZonedDateTime
+    finished Boolean
+    finishedDate ZonedDateTime
+}
+
+entity UserVideo {
+  id Long
+    watched Boolean
+    watchedDate ZonedDateTime
+}
+
+entity UserInterestedProgram {
+  id Long
+    bought Boolean
+    boughtDate ZonedDateTime
+}
+
+entity VideoTranscriptLanguage {
+  id Long
+    text String maxlength(2000)
+}
+
+enum Subject {
+    ANALYSIS, ARCHITECTURE, ART, BIOLOGY, BUSINESS, CHEMISTRY, 
+    COMMUNICATION, COMPUTER, CULTURE, DATA, DESIGN, EARTH, 
+    ECONOMICS, EDUCATION, ELECTRONICS, ENERGY, ENGINEERING, 
+    ENVIRONMENTAL, ETHICS, FINANCE, FOOD, HEALTH, HISTORY, 
+    HUMANITIES, LANGUAGE, LAW, LIFE, LITERATURE, MANAGEMENT, 
+    MATH, MEDICINE, MUSIC, NUTRITION, PHILANTHROPY, PHILOSOPHY, 
+    PHYSICS, SAFETY, SCIENCE, SOCIAL, STATISTICS, STUDIES, TEACHER, TRAINING
+}
+
+enum Level {
+  INTRODUCTORY, INTERMEDIATE, ADVANCED
+}
+
+enum Sex {
+  Male, Female
+}
+
+enum Availability {
+  CURRENT, STARTING_SOON, UPCOMING, SELF_PACED, ARCHIVED
+}
+
+relationship OneToMany {
+  Institution{programs} to Program{createdBy}
+    Institution{instructors} to Instructor{institution}
+    Program{courses} to Course{associatedProgram}
+    Course{videos} to Video{associatedCourse}
+    Language{courses} to Course{language}
+    Video{videoTranscriptLanguage} to VideoTranscriptLanguage{video}
+    Language{videoTranscriptLanguage} to VideoTranscriptLanguage{language}
+    
+    Video{userVideo} to UserVideo{video}
+    CourseraUser{userVideo} to UserVideo{user}
+    
+    Course{userCourse} to UserCourse{course}
+    CourseraUser{userCourse} to UserCourse{user}
+    
+    Program{userInterestedProgram} to UserInterestedProgram{program}
+    CourseraUser{userInterestedProgram} to UserInterestedProgram{user}
+}
+
+relationship ManyToMany {
+  Instructor{courses} to Course{instructors}
+}
+filter Course, Instructor
+paginate Course, Instructor with infinite-scroll
+service all with serviceImpl

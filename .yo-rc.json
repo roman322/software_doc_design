@@ -1,0 +1,39 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.mochurad.coursera"
+    },
+    "jhipsterVersion": "6.8.0",
+    "applicationType": "monolith",
+    "baseName": "coursera",
+    "packageName": "com.mochurad.coursera",
+    "packageFolder": "com/mochurad/coursera",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "no",
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "YTkyMTY2ZWI4ZTQ0MzYxYTNjYTA0ZWRkMWY0YzRmOWRjNTA0ZDJhMDMzOGQxYmE4NGM4M2U0MDVmZWY2MWYzMzZiZGU2MzdiZTU1NDAyY2E3MWFhN2RjN2I2OTNiNTU3OGZkN2E1NmU0ZTM4ZThmYmRlNWNhNTRjYjUwMmVlMzk=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "darkly",
+    "clientThemeVariant": "dark",
+    "creationTimestamp": 1586942411405,
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": false,
+    "blueprints": []
+  }
+}
